@@ -1,0 +1,101 @@
+.page-header h1{
+	font-size: 3em;
+}
+
+.super{
+	background-color:#171c22;
+   width: 100%;
+}
+.headerfooter{
+	background-color:#171c22;
+	color:#e5e5e5;
+}
+
+html,
+body {
+	
+   margin:0;
+   height: 100%;
+   
+}
+
+/*custom-class*/
+.screenshots{
+   width: 90%;
+   height: 100%;
+}
+.next{
+   padding-top: 100%;
+   font-size: 500%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*overide-bootstrap*/
+
+.table input[type=text]{
+   border: none;
+   font-size: 125%;
+}
+.table input[type=text]:focus{
+   border: none;
+   font-size: 125%;
+   outline: 0;
+}
+.display td{
+   font-weight: bolder;
+   font-size: 200%;
+}
+.skilldisplay td{
+   font
+}
+.abil td{
+   padding-top: 2em;
+   margin: 0;
+   font-weight: bolder;
+   font-size: 200%;
+}
+.skill td{
+   font-size: 75%;
+   font-weight:bold;
+}
+.feats td{
+   font-weight: bolder;
+   font-size: 200%;
+}
+
+
+label{
+   border-bottom: thin;
+   border-width: 100px;
+   margin-right: .5%;
+}
+textarea{
+   border:inset;
+   border-left: 0;
+   border-right: 0;
+}
+textarea:focus{
+   outline: 0;
+}
+
+input[type=text]{
+   border-top: 0;
+   border-right: 0;
+   border-left: 0; 
+
+   font-size: 125%;
+}
+input[type=text]:focus{
+   outline: 0;
+}
+

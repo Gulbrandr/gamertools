@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gamer Tools</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="author" href="humans.txt">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script src="../../../assets/js/app.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <div id="container">
+      <div id="header">
+        <div class="super">
+          <header class="headerfooter container">
+            <section class="row">
+              <section class="col-lg-6">
+                <div class="page-header">
+                  <h1>Gamer Tools</h1>
+                  <a href="../../../">Home</a>
+                  <a href="../../">App</a>
+                </div>
+              </section>
+              <section class="col-lg-4 col-lg-offset-2" id="sticker">
+                <div class="input-group">
+                  <span class="input-group-addon">@</span>
+                  <input type="text" maxlength="50" class="form-control" placeholder="Username">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">#&nbsp</span>
+                  <input type="password" maxlength="50" class="form-control" placeholder="Password">
+                </div>
+                <div class="input-group">
+                  <a href="#"  class="btn btn-primary form-control">Login</a>
+                  <a href="#"  class="btn btn-primary form-control">Register</a>
+                </div></section>
+              </section>
+            </header>
+          </div>
+        </div>
+        <div class="body" ng-controller="abilCtrl">
+          <section class="container wrapper">
+            <div class="row">
+              <div class="CharInfo">
+                <label>Chararcter Name:<input class="text-center" type="text" ng-model="charName" placeholder="Name me to continue"></label>
+                <span class="label label-danger">{{charNameError}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <section class="abil col-lg-7">
+                <div class="">
+                  <table class="table abil table-condensed" >
+                    <thead>
+                      <th></th>
+                      <th>&nbsp</th>
+                      <th><a href="" class="btn btn-primary"  ng-click="newset()">New Set</button></th>
+                      <th><a href="" class="btn btn-warning"  ng-click="reset()">Reset</button></th>
+                      
+                    </thead>
+                    <tr>
+                      <td><h3>STR:</h3></td>
+                      <td><input type="text" maxlength="3" class="text-center" ng-model="Abil.str" autofocus/></td>
+                      <td>{{Abil.str | CalculateScores}}</td>
+                    </tr>
+                    <tr>
+                      <td><h3>DEX:</h3></td>
+                      <td><input type="text" maxlength="3" class="text-center"  ng-model="Abil.dex"/></td>
+                      <td>{{Abil.dex | CalculateScores}}</td>
+                    </tr>
+                    <tr>
+                      <td><h3>CON:</h3></td>
+                      <td><input type="text" maxlength="3" class="text-center"  ng-model="Abil.con"/></td>
+                      <td>{{Abil.con | CalculateScores}}</td>
+                    </tr>
+                    <tr>
+                      <td><h3>INT:</h3></td>
+                      <td><input type="text" maxlength="3" class="text-center"  ng-model="Abil.int"/></td>
+                      <td>{{Abil.int | CalculateScores}}</td>
+                    </tr>
+                    <tr>
+                      <td><h3>WIS:</h3></td>
+                      <td><input type="text" maxlength="3" class="text-center"  ng-model="Abil.wis"/></td>
+                      <td>{{Abil.wis | CalculateScores}}</td>
+                    </tr>
+                    <tr>
+                      <td><h3>CHA:</h3></td>
+                      <td><input type="text" maxlength="3" class="text-center"  ng-model="Abil.cha"/></td>
+                      <td>{{Abil.cha | CalculateScores}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </section>
+              
+              <section class=" text-center col-lg-offset-2 col-lg-2">
+              <div>
+                <a class="btn" class="btn" ng-href="skills/#/!/?Name={{charName}}"  ng-click="addchar()">
+                <div class="next">
+                  <i class="fa fa-chevron-right fa-lg"></i></div>
+                <h4 class="">next</h4>
+              </a>
+            </div>
+              </section>
+            </div>
+            <div class="row">
+              <label>Height:<input type="text" ng-model="height"></label>
+              <label>Weight:<input type="text" ng-model="weight"></label>
+              <label>Homeland:<input type="text" ng-model="homeland"></label>
+              <label>Diety:<input type="text" ng-model="diety"></label>
+              <label>Gender:<input type="text" ng-model="gender"></label>
+              <label>Hair:<input type="text" ng-model="hair"></label>
+              <label>Eyes:<input type="text" ng-model="eyes"></label>
+            </div>
+            <div class="row">
+              <section class="col-lg-7">
+              <label>Description:<br><textarea cols="105" rows="25" ng-model="Description" placeholder="It was the coldest day of winter..."></textarea>
+              </label>
+            </section>
+              <section class=" text-center col-lg-offset-2 col-lg-2">
+                <a class="btn" ng-href="skills/#/!/?Name={{charName}}"  ng-click="addchar()">
+                <div class="next"><i class="fa fa-chevron-right fa-lg"></i></div>
+                <h4 class="">next</h4>
+              </a>
+              </section>
+            </div>
+          </section>
+          <!--End of Wrapper-->
+        </div>
+        
+        
+        
+      </body>
+    </html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gamer Tools</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="author" href="humans.txt">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="assets/js/sticky.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    
+
+  </head>
+  <body>
+    <div id="container">
+    <div id="header"> 
+    <div class="super">
+      <header class="headerfooter container">
+        <section class="row">
+          <section class="col-lg-6">
+            <div class="page-header">
+              <h1>Gamer Tools</h1>
+              <a href=".">Home</a>
+              <a href="./app">App</a>
+            </div>
+          </section>
+          <section class="col-lg-4 col-lg-offset-2" id="sticker">
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <input type="text" maxlength="50" class="form-control" placeholder="Username">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">#&nbsp</span>
+              <input type="password" maxlength="50" class="form-control" placeholder="Password">
+            </div>
+            <div class="input-group">
+              <a href="#"  class="btn btn-primary form-control">Login</a>
+              <a href="#"  class="btn btn-primary form-control">Register</a>
+
+            </div>
+            <img src="https://www.firebase.com/images/poweredby/PoweredbyFirebase_3.png" alt=""> 
+          </section>
+        </section>
+      </header>
+    </div>
+  </div> 
+  <div class="body" ng-app="refapp">
+    <section class="container wrapper">
+      <div class="jumbotron">
+      <section class="row">
+        <section>
+         <h1>References</h1>
+        </section>
+      </section>
+    </div>
+     
+      <section id="outsidelinks" class="row" ng-controller="refCtrl">
+        <div ng-cloak ng-repeat="ref in references">
+         <h1>&nbsp&nbsp&nbsp{{ref.Author}}. {{ref.Name}}. {{ref.LastUpdated}}. <a href="{{ref.http}}">{{ref.Http}}.</a> </h1>
+        </div>
+      </section>
+    </section><!--End of Wrapper-->
+  
+  
+</div>
+
+<br>
+<br>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+<script src="//cdn.firebase.com/v0/firebase.js"></script>
+<script src="//cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+<script type="text/javascript">
+    var refapp = angular.module('refapp', ['firebase']);
+    refapp.controller("refCtrl", ["$scope","$firebase", "$location","$http",
+      function($scope, $firebase, $location, $http) {
+        var refref = new Firebase("https://gamertools.firebaseio.com/References");
+            $scope.references = $firebase(refref);
+      }
+    
+    
+    ]);
+</script>
+</body>
+</html>

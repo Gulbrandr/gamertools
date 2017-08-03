@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gamer Tools</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="author" href="humans.txt">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script src="../../../assets/js/app.js"></script>
+  </head>
+  <body ng-app="myapp" ng-cloak>
+    <div id="container">
+      <div id="header">
+        <div class="super">
+          <header class="headerfooter container">
+            <section class="row">
+              <section class="col-lg-6">
+                <div class="page-header">
+                  <h1>Gamer Tools</h1>
+                   <a href="../../../">Home</a>
+                  <a href="../../">App</a>
+                </div>
+              </section>
+              <section class="col-lg-4 col-lg-offset-2" id="sticker">
+                <div class="input-group">
+                  <span class="input-group-addon">@</span>
+                  <input type="text" maxlength="50" class="form-control" placeholder="Username">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">#&nbsp</span>
+                  <input type="password" maxlength="50" class="form-control" placeholder="Password">
+                </div>
+                <div class="input-group">
+                  <a href="#"  class="btn btn-primary form-control">Login</a>
+                  <a href="#"  class="btn btn-primary form-control">Register</a>
+                </div></section>
+              </section>
+            </header>
+          </div>
+        </div>
+        <div class="body" ng-controller="DisplayCharCtrl">
+          <section class="container wrapper">
+            <div class="row">
+              <div class="CharInfo">
+                <label>Chararcter Name:<input type="text" class="text-center" ng-disabled ng-model="charName" readonly></label>
+                <label>Hit Points: _______/{{Character.Scores.ConScore + 10}}</label>
+                <br>
+                <label>Height: &nbsp<input type="text" ng-model="Character.Height"></label>
+                <label>Weight: &nbsp<input type="text" ng-model="Character.Weight"></label>
+                <label>Homeland: &nbsp<input type="text" ng-model="Character.Homeland"></label>
+                <label>Diety: &nbsp<input type="text" ng-model="Character.Diety"></label>
+                <label>Gender: &nbsp<input type="text" ng-model="Character.Gender"></label>
+                <label>Hair: &nbsp<input type="text" ng-model="Character.Hair"></label>
+                <label>Eyes: &nbsp<input type="text" ng-model="Character.Eyes"></label>
+              </div>
+              <section class="col-lg-10">
+                <ul class="nav nav-tabs" id="myTab">
+                  <li class="active"><a href="?Name={{charName}}#home" data-toggle="tab">Abilities & Skills</a></li>
+                  <li><a ng-href="?Name={{charName}}#profile" data-toggle="tab">Feats & Equipment</a></li>
+                  
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active row" id="home">
+                    <div class="col-lg-5">
+                      <table class="table display">
+                        <thead>
+                          <th>Ability</th>
+                          <th></th>
+                          <th>Ability Score</th>
+                        </thead>
+                        <tr>
+                          <td>STR:</td><td>{{Character.Abilities.Str}}</td><td>{{Character.Scores.StrScore}}</td>
+                        </tr>
+                        <tr>
+                          <td>DEX:</td><td>{{Character.Abilities.Dex}}</td><td>{{Character.Scores.DexScore}}</td>
+                        </tr>
+                        <tr>
+                          <td>CON:</td><td>{{Character.Abilities.Con}}</td><td>{{Character.Scores.ConScore}}</td>
+                        </tr>
+                        <tr>
+                          <td>INT:</td><td>{{Character.Abilities.Int}}</td><td>{{Character.Scores.IntScore}}</td>
+                        </tr>
+                        <tr>
+                          <td>WIS:</td><td>{{Character.Abilities.Str}}</td><td>{{Character.Scores.WisScore}}</td>
+                        </tr>
+                        <tr>
+                          <td>CHA:</td><td>{{Character.Abilities.Str}}</td><td>{{Character.Scores.ChaScore}}</td>
+                        </tr>
+                      </table>
+                      <table class>
+                      </table>
+                      <h3>{{Character.Description}}</h3>
+                    </div>
+                    <div class="col-lg-offset-2 col-lg-5">
+                      <table class="table skill">
+                        <tr ng-repeat="skill in Character.CharSkills">
+                          <td>{{skill.Name}}<td><td>{{skill.Score}}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="profile">
+                    <div class="row">
+                      <table class="table">
+                        <thead>
+                          <th>Feat</th>
+                          <th>Feat Name</th>
+                        </thead>
+                      <tr><td>Human :<td>{{Character.CharFeats.HumanFeat}}<td></tr>
+                    <tr><td>First Feat:<td>{{Character.CharFeats.FirstFeat}}<td></tr>
+                  </table>
+                </div>
+                <div class="row">
+                  <table class="table abil">
+                    <thead>
+                      <th></th>
+                      <th>AC</th>
+                      <th>Base</th>
+                      <th>Armor</th>
+                      <th>Dex</th>
+                      <th>Shield</th>
+                      
+                    </thead>
+                    <tr><td>AC:</td><td><h4>{{10+8+Character.Scores.DexScores+2}}</h4></td><td>10</td><td>8</td><td>{{Character.Scores.DexScore}}</td><td>2</td></tr>
+                    <tr>
+                    </table>
+                  </div>
+                    <div class="row">
+                      <table class="table abil">
+                        <thead>
+                          <th></th>
+                          <th>Full Attack</th>
+                          <th>Base Attack</th>
+                          <th>STR</th>
+                          <th>&nbsp</th>
+                          <th>Damage</th>
+                          
+                          
+                        </thead>
+                        <tr><td>Attack:</td><td><h4>{{Character.Scores.StrScores+1}}</h4></td><td>1</td><td>{{Character.Scores.StrScores}}</td><td>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</td><td>&nbsp</td><td>d8</td></tr>
+                        <tr>
+                        </table>
+                      
+                    </div>
+                    <div class="row">
+                      <table class="table abil">
+                        <thead>
+                          <th>Equipment Type</th>
+                          <th>Equipment Name</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>                        
+                          
+                        </thead>
+                        <tr><td>Armor:</td>
+                          <td><h4>{{Character.CharEquipment.Armor}}</h4></td>
+                          <td>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</td>
+                        </tr>
+                        <tr><td>Shield:</td>
+                          <td><h4>{{Character.CharEquipment.Shield}}</h4></td>
+                          <td>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</td>
+                        </tr>
+                        <tr><td>Weapon:</td>
+                          <td><h4>{{Character.CharEquipment.Weapon}}</h4></td>
+                          <td>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</td>
+                        </tr>
+                        </table>
+                      
+                    </div>
+                    
+                    
+                  </div>
+                  <script>$(function () {$('#myTab a:first').tab('show')})</script>
+                </section>
+                <section class=" text-center  col-lg-2">
+                  <a class="btn" ng-href="../../">
+                  <div class="next"><i class="fa fa-chevron-right fa-lg"></i></div>
+                  <h4 class="">App Main Page</h4>
+                  </a>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <a class="btn" ng-href="../../">
+                  <div class="next"><i class="fa fa-chevron-right fa-lg"></i></div>
+                  <h4 class="">App Main Page</h4>
+                  </a>
+                </section>
+              </div>
+            </section>
+            <!--End of Wrapper-->
+          </div>
+          
+          
+          
+        </body>
+      </html>
