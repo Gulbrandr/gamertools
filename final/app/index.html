@@ -1,0 +1,121 @@
+  <!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gamer Tools</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="author" href="humans.txt">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/js/sticky.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js"></script>
+    <script src="/final/assets/js/app.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <div id="container">
+      <div id="header">
+        <div class="super">
+          <header class="headerfooter container">
+            <section class="row">
+              <section class="col-lg-6">
+                <div class="page-header">
+                  <h1>Gamer Tools</h1>
+                  <a href="../">Home</a>
+                  <a href=".">App</a>
+
+                </div>
+              </section>
+              <section class="col-lg-4 col-lg-offset-2" id="sticker">
+                <div class="input-group">
+                  <span class="input-group-addon">@</span>
+                  <input type="text" maxlength="50" class="form-control" placeholder="Username">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">#&nbsp</span>
+                  <input type="password" maxlength="50" class="form-control" placeholder="Password">
+                </div>
+                <div class="input-group">
+                  <a href="#"  class="btn btn-primary form-control">Login</a>
+                  <a href="#"  class="btn btn-primary form-control">Register</a>
+                </div>
+                <img src="https://www.firebase.com/images/poweredby/PoweredbyFirebase_3.png" alt="">                 
+              </section>
+            </section>
+          </header>
+        </div>
+      </div>
+      <div class="body">
+        <section class="container wrapper">
+          <div class="row">
+            <section ng-controller="CharController" class="chars col-lg-4">
+              <h2>Characters</h2>
+              <hr>
+              <div class="char" ng-repeat="char in Characters">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-lg-3">
+                        <a href="modules/displaychar/#/!/?Name={{char.Name}}"><h2>{{char.Name}}</h2></a>
+                      </div>
+                      <div class="col-lg-offset-4 col-lg-3">
+                        <h4>{{char.Race}}</h4>
+                        <h4>{{char.Class}}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    {{char.Description}}
+                    <br>
+                    <br>
+                    <br>
+                   
+                  </div>
+                </div>
+
+              </div>
+              
+            </section>
+            <section class="games col-lg-3">
+              <h2>Games</h2>
+              <hr>
+              <h5>You Have no Games at this time</h5>
+              
+            </section>
+            <section class="modules col-lg-offset-2 col-lg-2">
+              <h2>Modules</h2>
+              <hr>
+              <div class="panel panel-default">
+                <div class="panel-heading"><h6><a href="../app/modules/createchar/">Create Character</a></h6></div>
+                <div class="panel-body">
+                  <p>Create a Character and Register to use in a Gamer Tool's Game</p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <br>
+          <br>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          
+        </section>
+        <!--End of Wrapper-->
+        
+        
+      </div>
+      <br>
+      <br>
+    </body>
+  </html>

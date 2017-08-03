@@ -1,0 +1,9 @@
+
+
+	<div ng-repeat="abil in char.Abilities" class="col-lg-5">
+		<div class="input-group">
+			<span class="input-group-addon">{{abil.Name}}:</span>
+			<input type="text" maxlength="3" class="form-control" name="{{abil.Name}}"  value="{{abil.Score}}">
+		</div>
+		<br>		
+	</div>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gamer Tools</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="author" href="humans.txt">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.js"></script>
+    <link rel="stylesheet" href="../../../../assets/css/style.css">
+    <script src="../../../../assets/js/app.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <div id="container">
+      <div id="header">
+        <div class="super">
+          <header class="headerfooter container">
+            <section class="row">
+              <section class="col-lg-6">
+                <div class="page-header">
+                  <h1>Gamer Tools</h1>
+                  <a href="../../../../">Home</a>
+                  <a href="../../../">App</a>
+                </div>
+              </section>
+              <section class="col-lg-4 col-lg-offset-2" id="sticker">
+                <div class="input-group">
+                  <span class="input-group-addon">@</span>
+                  <input type="text" maxlength="50" class="form-control" placeholder="Username">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">#&nbsp</span>
+                  <input type="password" maxlength="50" class="form-control" placeholder="Password">
+                </div>
+                <div class="input-group">
+                  <a href="#"  class="btn btn-primary form-control">Login</a>
+                  <a href="#"  class="btn btn-primary form-control">Register</a>
+                </div></section>
+              </section>
+            </header>
+          </div>
+        </div>
+        <div class="body" ng-controller="skillCtrl">
+          <section class="container wrapper">
+            <div class="row">
+              <div class="CharInfo">
+                <label>Chararcter Name:<input type="text" class="text-center" ng-disabled ng-model="charName" readonly></label>
+              </div>
+            </div>
+            <div class="row">
+              <section class="abil col-lg-7">
+                <div class="">
+                  <table class="table skill table-condensed" >
+                      <h3>Please chose {{char.Scores.IntScore+2}} Skills you have
+                       {{(char.Scores.IntScore+2)-(Ride+Geography+Stealth+Planes+Perform+Intimidate+Acrobatics+Appraise+Bluff+Climb+Craft+Diplomacy+DisableDevice+Disguise+EscapeArtist+Fly+HandleAnimal+Heal+Arcana+Dungeoneering+Engineering+History+Local+Nature+Nobility+Religion+Linguistics+Perception+Profession+SenseMotive+SleightofHand+Spellcraft+Survival+Swim+UseMagicDevice)}} 
+                       skills left to choose</h3>
+                    <h4 class="label label-danger">{{skillerror}}</h4>
+                    <thead>
+                      <th>Skill</th>
+                      <th>Points</th>
+                      <th><a class="btn btn-warning" ng-click="reset()">Reset</th>
+                    </thead>
+                    <tbody>
+                      <tr><td>Acrobatics</td><td><input type="number" ng-model="Acrobatics" max="1" min="0" maxlength="1" placeholder="1" autofocus/><td></tr>
+                      <tr><td>Appraise</td><td><input type="number" ng-model="Appraise" max="1" min="0"maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Bluff</td><td><input type="number" ng-model="Bluff" max="1" min="0"maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Climb</td><td><input type="number" ng-model="Climb" max="1" min="0"maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Craft</td><td><input type="number" ng-model="Craft" max="1" min="0"maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Diplomacy</td><td><input type="number" ng-model="Diplomacy" max="1" min="0"maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Disable Device</td><td><input type="number" ng-model="DisableDevice" max="1" min="0" maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Disguise</td><td><input type="number" ng-model="Disguise" maxlength="1"max="1" min="0" placeholder="1"/><td></tr>
+                      <tr><td>Escape Artist</td><td><input type="number" ng-model="EscapeArtist" max="1" min="0" maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Fly</td><td><input type="number" ng-model="Fly" maxlength="1" max="1" min="0" placeholder="1"/><td></tr>
+                      <tr><td>Handle Animal</td><td><input type="number" ng-model="HandleAnimal" max="1" min="0" maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Heal</td><td><input type="number" ng-model="Heal" maxlength="1" max="1" min="0" placeholder="1"/><td></tr>
+                      <tr><td>Intimidate</td><td><input type="number" ng-model="Intimidate" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (arcana)</td><td><input type="number" ng-model="Arcana" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (dungeoneering)</td><td><input type="number" ng-model="Dungeoneering" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (engineering)</td><td><input type="number" ng-model="Engineering" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (geography)</td><td><input type="number" ng-model="Geography" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (history)</td><td><input type="number" ng-model="History" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (local)</td><td><input type="number" ng-model="Local" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (nature)</td><td><input type="number" ng-model="Nature" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (nobility)</td><td><input type="number" ng-model="Nobility" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (planes)</td><td><input type="number" ng-model="Planes" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>  (religion)</td><td><input type="number" ng-model="Religion" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Linguistics</td><td><input type="number" ng-model="Linguistics" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Perception</td><td><input type="number" ng-model="Perception" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Perform</td><td><input type="number" ng-model="Perform" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Profession</td><td><input type="number" ng-model="Profession" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Ride</td><td><input type="number" ng-model="Ride" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Sense Motive</td><td><input type="number" ng-model="SenseMotive" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Sleight of Hand</td><td><input type="number" ng-model="SleightofHand" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Spellcraft</td><td><input type="number" ng-model="Spellcraft" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Stealth</td><td><input type="number" ng-model="Stealth" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Survival</td><td><input type="number" ng-model="Survival" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Swim</td><td><input type="number" ng-model="Swim" max="1" min="0"  maxlength="1" placeholder="1"/><td></tr>
+                      <tr><td>Use Magic Device</td><td><input type="number" max="1" min="0"  ng-model="UseMagicDevice" maxlength="1" placeholder="1"/><td></tr>
+                    </tbody>
+                  </table>
+                  <h3>Please chose {{char.Scores.IntScore+2}} Skills you have
+                       {{(char.Scores.IntScore+2)-(Ride+Geography+Stealth+Planes+Perform+Intimidate+Acrobatics+Appraise+Bluff+Climb+Craft+Diplomacy+DisableDevice+Disguise+EscapeArtist+Fly+HandleAnimal+Heal+Arcana+Dungeoneering+Engineering+History+Local+Nature+Nobility+Religion+Linguistics+Perception+Profession+SenseMotive+SleightofHand+Spellcraft+Survival+Swim+UseMagicDevice)}} 
+                       skills left to choose</h3>
+                    <h4 class="label label-danger">{{skillerror}}</h4>
+                </div>
+              </section>
+              
+              <section class=" text-center col-lg-offset-2 col-lg-2">
+                <a class="btn" ng-href="../featsnweapons/#/!/?Name={{charName}}" ng-click="setskills()">
+                <div class="next"><i class="fa fa-chevron-right fa-lg"></i></div>
+                <h4 class="">next</h4>
+
+                </a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a class="btn" ng-href="" ng-click="setskills()">
+                <div class="next"><i class="fa fa-chevron-right fa-lg"></i></div>
+                <h4 class="">next</h4>
+                </a>
+              </section>
+            </div>
+          </section>
+          <!--End of Wrapper-->
+        </div>
+        
+        
+        
+      </body>
+    </html>
